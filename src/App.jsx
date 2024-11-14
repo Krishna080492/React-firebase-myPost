@@ -1,7 +1,11 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { createPost } from "./features/post/PostSlice";
 
 function App() {
   let [post, setPost] = useState({});
+
+  let dispatch = useDispatch();
 
   let handleInput = (e) => {
     let { name, value } = e.target;
@@ -12,6 +16,7 @@ function App() {
   let handleSubmit = (e) => {
     e.preventDefault();
     console.log(post);
+    dispatch(createPost(post))
   };
 
   return (
